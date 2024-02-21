@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Poll } from './poll/poll.entity';
+import { User } from './poll/poll.entity';
 import { PollService } from './poll/poll.service';
 import { PollController } from './poll/poll.controller';
 import { AppController } from './app.controller';
@@ -15,10 +15,10 @@ import { AppService } from './app.service';
       username: 'postgres',
       password: 'qwerty',
       database: 'local_test',
-      entities: [Poll],
+      entities: [User],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Poll]),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [PollService, AppService],
   controllers: [PollController, AppController],

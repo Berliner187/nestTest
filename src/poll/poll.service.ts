@@ -1,21 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Poll } from './poll.entity';
+import { CreateUserDto } from './user.dto';
+import { User } from './poll.entity';
 
 @Injectable()
 export class PollService {
-  constructor(
-    @InjectRepository(Poll)
-    private readonly pollRepository: Repository<Poll>,
-  ) {}
+    constructor(
+        @InjectRepository(User)
+        private readonly userRepository: Repository<User>,
+      ) {}
+    
+      async createUser(createUserDto: CreateUserDto) {
+        const user = new User();
+        user.email = createUserDto.email;
+        user.full_name = createUserDto.full_name;
+        user.password = createUserDto.password;
+        user.is_active = true;
+    
+        return this.userRepository.save(user);
+      }
+    
+    private users = [];
 
-  async createPoll(question: string, options: string[]): Promise<Poll> {
-    const poll = this.pollRepository.create({ question, options });
-    return this.pollRepository.save(poll);
-  }
+    create(createUserDto: CreateUserDto) {
+        const user = { ...createUserDto };
+        this.users.push(user);
+        return user;
+    }
 
-  async getAllPolls(): Promise<Poll[]> {
-    return this.pollRepository.find();
-  }
+    findAll() {
+        return this.users;
+    }
 }
