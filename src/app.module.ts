@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './poll/poll.entity';
-import { PollService } from './poll/poll.service';
-import { PollController } from './poll/poll.controller';
+import { User } from './user/user.entity';
+import { UserService } from './user/user.service';
+import { UserController } from './user/user.controller';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -20,7 +20,7 @@ import { AppService } from './app.service';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [PollService, AppService],
-  controllers: [PollController, AppController],
+  providers: [UserService, AppService],
+  controllers: [UserController, AppController],
 })
 export class AppModule {}
