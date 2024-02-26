@@ -26,6 +26,16 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+### Version NPM
+```bash
+  10.2.4
+```
+
+### Node version
+```bash
+  v20.11.1
+```
+
 ## Installation
 
 ```bash
@@ -33,6 +43,8 @@ $ npm install
 ```
 
 ## Running the app
+
+Go to project folder, then:
 
 ```bash
 # development
@@ -43,19 +55,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
